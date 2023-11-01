@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DataFetchService } from '../data-fetch.service';
 
 @Component({
   selector: 'app-search',
@@ -6,9 +7,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-  location: string = '';
+  location: any | undefined;
+  constructor(private dataFetchService: DataFetchService) {}
+
+  @Output()
+  newEventEmitter = new EventEmitter<string>();
 
   ClickOccurs() {
-
+    this.dataFetchService.setLocation(this.location);
+    this.newEventEmitter.emit();
   }
 }

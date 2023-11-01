@@ -3,9 +3,9 @@
 </div>
 <div class="container">
   <div class="second">
-    <app-search></app-search>
+    <app-search  (newEventEmitter)="EventOccurs()"></app-search>
   </div>
   <div class="third">
-
+    <app-show-data [weatherData]="weatherData"></app-show-data>
   </div>
 </div>
